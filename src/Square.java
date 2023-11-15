@@ -9,7 +9,7 @@ public class Square extends TFigure {
     public Square(int x, int y, int w, int h, Color color){
         super(x,y);
 
-        System.out.println("Координаты центра верхней левой точки: x=" + x + ", y=" + y);
+        System.out.println("Координаты верхней левой точки: x=" + x + ", y=" + y);
         if ((x+w) >= 1000) { w = 1000 - x;}
         if ((y+h) >= 500) { h = 500 - y;}
         System.out.println("Ширина/высота: " + w + "; " + h);
@@ -37,6 +37,23 @@ public class Square extends TFigure {
         this.tagFigure = 4;
         System.out.println("Создан квадрат");
     }
+
+    public Square(int x, int y, int w, Color color){
+        super(x,y); h = w;
+
+        System.out.println("Координаты центра: x=" + x + ", y=" + y);
+        if ((x+w) >= 1000) { w = 1000 - x; h =w;}
+        if ((y+h) >= 500) { h = 500 - y; w = h;}
+        System.out.println("Ширина/высота: " + w);
+        this.w = w;
+        this.h = h;
+        sets(x, y, x+w, y, x+w, y+h, x, y+h, false);
+        this.color = color;
+
+        this.tagFigure = 4;
+        System.out.println("Создан квадрат");
+    }
+
 
     public Square(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, Color color, boolean tag){
         super(x1,y1);

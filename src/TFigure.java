@@ -26,6 +26,9 @@ abstract class TFigure extends JPanel {
 
     abstract void Show(boolean VISION);
 
+    public void show(){
+        this.VISION = !VISION;
+    }
     protected void MoveTo(int dx, int dy){
         this.Show(false);
         if(tagFigure == 0){
