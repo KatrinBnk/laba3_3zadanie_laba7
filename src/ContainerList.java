@@ -9,6 +9,7 @@ public class ContainerList {
     private int figureKey;
     private int counterList;
 
+
     public ContainerList() { First = null; }
 
     public void action(int actionKey) {

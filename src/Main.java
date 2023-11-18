@@ -231,6 +231,7 @@ public class Main {
                 ListContainer = null;
                 counterList = 0;
                 System.out.println( "Фигуры контейнера-списка стерты, а соответствующие объекты уничтожены");
+                if(message == null){message = new JLabel(" ");}
                 message.setText("Контейнер-список уничтожен.");
             } else{
                 JOptionPane.showMessageDialog(fNL, "Контейнер на базе списка не создан");
@@ -251,6 +252,8 @@ public class Main {
                 ArrayContainer = null;
                 counterArray = 0;
                 System.out.println( "Фигуры контейнера-массива стерты, а соответствующие объекты уничтожены");
+                if(message == null){message = new JLabel(" ");}
+
                 message.setText("Контейнер-массив уничтожен.");
             } else{
                 JOptionPane.showMessageDialog(fNL, "Контейнер на базе массива не создан");
@@ -565,6 +568,8 @@ public class Main {
             sP.add(buttons[12]);
         } else if(buttonKey == 23 || buttonKey == 24){
             createPanel(22, new int[]{0, 23, 24});
+            if(message == null){message = new JLabel(" ");}
+
             message.setText("");
         }
         sP.revalidate();
@@ -735,6 +740,7 @@ public class Main {
             if(ArrayContainer != null){
                 message.setText("Создан контейнер-массив из " + counterArray + " фигур.");
             } else{
+                if(message == null){message = new JLabel(" ");}
                 message.setText("Контейнер-массив не создан.");
             }
         }
@@ -859,6 +865,7 @@ public class Main {
                 ListContainer = new ContainerList();
                 ListContainer.action(1);
                 counterList = ListContainer.getCount();
+                ///message = new JLabel("");
                 message.setText("Создан Контейнер-Список из " + counterList + " элементов");
                 cP.revalidate();
                 cP.repaint();
@@ -871,6 +878,8 @@ public class Main {
                 ArrayContainer = new ContainerArray();
                 ArrayContainer.action(1);
                 counterList = ArrayContainer.getCount();
+                if(message == null){message = new JLabel(" ");}
+
                 message.setText("Создан Контейнер-массив из " + counterList + " элементов");
                 cP.revalidate();
                 cP.repaint();
