@@ -99,19 +99,18 @@ public class ContainerList {
     }
 
 
-    private Item iterator(int index) {
-        if (index <= counterList) {
-            Item a = First;
-            for (int i = 0; i < index; i++) {
-                a = a.GetNext();
+    TFigure[] Iterator(int actionKey) {
+        action(actionKey);
+        if (counterList > 0) {
+            TFigure[] result = new TFigure[counterList];
+            Item current = First;
+            for (int i = 0; i < counterList; i++) {
+                result[i] = current.GetFig();
+                current = current.GetNext();
             }
-            return a;
-        }  else { return null; }
-    }
-
-    JPanel getFigureFromItemList(int i) {
-        Item a = iterator(i);
-        return a.GetFig();
+            return result;
+        }
+        return null;
     }
 
     int getCount() { return this.counterList; }

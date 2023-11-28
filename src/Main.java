@@ -217,16 +217,15 @@ public class Main {
     private void deleteAll() {
          if (buttonKey == 23) {
             if(ListContainer != null){
+                TFigure[] figuresToRemove = ListContainer.Iterator( 6);
+                for (TFigure figure : figuresToRemove) {
+                    cP.remove(figure);
+                }
                 if (message != null){
-                    for (int i = 0; i < counterList; i ++){
-                        cP.remove(ListContainer.getFigureFromItemList(i));
-                    }
-                    ListContainer.action(4);
                     counterList = ListContainer.getCount();
-                    cP.remove(message);
-                    cP.repaint();
-                    message = null;
+                    message.setText("Контейнер-список уничтожен");
                     ListContainer.setIList(0);
+                    cP.repaint();
                 }
                 ListContainer = null;
                 counterList = 0;
@@ -246,7 +245,7 @@ public class Main {
                     counterList = ArrayContainer.getCount();
                     cP.remove(message);
                     cP.repaint();
-                    message = null;
+                    message.setText("Контейнер-массив уничтожен");
                     ArrayContainer.setIMass(0);
                 }
                 ArrayContainer = null;
@@ -278,12 +277,12 @@ public class Main {
     private void eraseAll() {
         if (buttonKey == 23){
             if(ListContainer != null){
-                ListContainer.action(4);
                 counterList = ListContainer.getCount();
+                TFigure[] figuresToRemove = ListContainer.Iterator( 4);
+                for (TFigure figure : figuresToRemove) {
+                    cP.remove(figure);
+                }
                 if (message != null){
-                    for(int i=0; i < counterList; i++){
-                        cP.remove(ListContainer.getFigureFromItemList(i));
-                    }
                     message.setText("Все фигуры из контейнера-списка стерты");
                     cP.revalidate();
                     cP.repaint();
@@ -328,15 +327,14 @@ public class Main {
     private void showAll() {
         if(buttonKey == 23){
             if(ListContainer != null){
-                ListContainer.action(3);
-                counterList = ListContainer.getCount();
-                for(int i = 0; i < counterList; i++){
-                    cP.add(ListContainer.getFigureFromItemList(i), BorderLayout.CENTER);
-                    message.setText("Показано " + (i+1) + "/" + counterList + " фигур из контейнера-списка");
+                TFigure[] figuresToRemove = ListContainer.Iterator( 3);
+                for (TFigure figure : figuresToRemove) {
+                    cP.add(figure, BorderLayout.CENTER);
                     cP.validate();
                     cP.revalidate();
                     cP.repaint();
                 }
+                message.setText("Показано " + (counterList) + "/" + counterList + " фигур из контейнера-списка");
                 ListContainer.setIList(counterList);
             } else {
                 JOptionPane.showMessageDialog(fNL, "Контейнер на базе списка не создан");
@@ -427,11 +425,12 @@ public class Main {
             MoveContainer(x,y);
         } else if (buttonKey == 23) {
             if(ListContainer != null){
-                ListContainer.action(2);
-                int index = ListContainer.getIList();
-                for (int i = 0; i < index; i++){
-                    cP.add(ListContainer.getFigureFromItemList(i), BorderLayout.CENTER);
+                TFigure[] figuresToRemove = ListContainer.Iterator( 2);
+                for (TFigure figure : figuresToRemove) {
+                    cP.add(figure, BorderLayout.CENTER);
                     cP.validate();
+                    cP.revalidate();
+                    cP.repaint();
                 }
             }
             else{
